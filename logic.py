@@ -6,15 +6,11 @@ Public API:
 - find_pdfs(inputs: Iterable[str]) -> list[Path]
 - convert_pdf(pdf_path: Path, *, dpi: int, overwrite: bool, alpha: bool,
               password: str | None, log: Callable[[str], None] | None = None) -> None
-
-CLI:
-    main.py <files-or-folders> --dpi 600 --alpha --overwrite --password "secret"
 """
 
 from __future__ import annotations
 from pathlib import Path
 from typing import Iterable, Callable
-import argparse
 import pymupdf
 
 
@@ -151,76 +147,8 @@ def convert_pdf(
         except Exception: pass
 
 
-# ---------------- CLI ----------------
-
-def _main() -> int:
-    # Parse command-line arguments
-    parser = argparse.ArgumentParser(
-        description="Convert PDFs to PNG images beside the source files."
-    )
-
-    # Positional arguments
-    parser.add_argument(
-        "inputs",
-        nargs="+",
-        help="PDF files and/or folders (folders searched recursively).",
-    )
-
-    # --- Optional arguments ---
-
-    parser.add_argument(
-        "--dpi",
-        type=int,
-        default=600,
-        help="Render resolution in DPI (default: 600).",
-    )
-
-    parser.add_argument(
-        "--alpha",
-        action="store_true",
-        help="Keep transparency (alpha channel).",
-    )
-
-    parser.add_argument(
-        "--overwrite",
-        action="store_true",
-        help="Overwrite existing PNG files.",
-    )
-
-    parser.add_argument(
-        "--password",
-        type=str,
-        default=None,
-        help="Password to open encrypted PDFs (applies to all).",
-    )
-
-    # Parse the args
-    args = parser.parse_args()
-
-    # Find PDFs from inputs
-    pdfs = find_pdfs(args.inputs)
-
-    # Report if none found
-    if not pdfs:
-        print("[INFO] No PDFs found.")
-        return 1
-
-    # Convert each PDF
-    for pdf in pdfs:
-        convert_pdf(
-            pdf,
-            dpi=args.dpi,
-            overwrite=args.overwrite,
-            alpha=args.alpha,
-            password=args.password,
-            log=None,
-        )
-    
-    return 0
-
-# Entry point
+# Entry (point for direct run, which we do not want)
 if __name__ == "__main__":
-    # Exit with the return code from _main()
-    # return 1 -> no PDFs found (non-zero exit for scripts)
-    # return 0 -> success
-    raise SystemExit(_main())
+    return_code = 1
+    print("[ERROR] This module is not meant to be run directly. Use cli.py or gui.py.")
+    exit(return_code)

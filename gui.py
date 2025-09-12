@@ -16,7 +16,7 @@ from tkinter import ttk, filedialog, messagebox
 from tkinterdnd2 import DND_FILES, TkinterDnD
 
 # Core conversion module (adjust import if you renamed it)
-import main as core
+import logic as core
 
 # -------------------- Config --------------------
 APP_TITLE = "PDF → PNG Converter"
