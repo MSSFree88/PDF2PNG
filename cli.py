@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Command-line interface for PDF → PNG conversion using logic.py
-main.py <files-or-folders> --dpi 600 --alpha --overwrite --password "secret"
+cli.py <files-or-folders> --dpi 600 --alpha --overwrite --password "secret"
 """
 
 from typing import List
