@@ -89,7 +89,7 @@ pyinstaller gui.py --name "PDF2PNG" --noconsole --onefile --collect-all tkinterd
 
 ### Build CLI version
 ```bash
-pyinstaller cli.py --name "PDF2PNG" --onefile --collect-all tkinterdnd2 --collect-all pymupdf --icon ./icon/icon.ico
+pyinstaller cli.py --name "PDF2PNG CLI" --onefile --collect-all tkinterdnd2 --collect-all pymupdf --icon ./icon/icon.ico
 ```
 
 ---
