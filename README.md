@@ -69,7 +69,7 @@ Then drag and drop PDFs/folders into the window, or use the buttons.
 ---
 
 ## 📥 Downloads (Executables)
-If you just want to run it on Windows, download the .exe files from the `dist` folder
+If you just want to run it on Windows, [Download the latest release](../../releases/latest)
 
 **Run the executable**
 - **GUI:** Double-click PDF2PNG.exe
@@ -89,7 +89,7 @@ pyinstaller gui.py --name "PDF2PNG" --noconsole --onefile --collect-all tkinterd
 
 ### Build CLI version
 ```bash
-pyinstaller cli.py --name "PDF2PNG" --onefile --collect-all tkinterdnd2 --collect-all pymupdf --icon ./icon/icon.ico
+pyinstaller cli.py --name "PDF2PNG CLI" --onefile --collect-all tkinterdnd2 --collect-all pymupdf --icon ./icon/icon.ico
 ```
 
 ---
