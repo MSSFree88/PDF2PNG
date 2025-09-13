@@ -7,7 +7,7 @@ Includes both a **command-line interface (CLI)** and a **drag-and-drop GUI**.
 
 ## ✨ Features
 
-### CLI (`main.py`)
+### CLI (`cli.py`)
 - Convert single PDFs or entire folders (recursive search).
 - Handles single-page and multi-page PDFs  
   ↳ Multi-page outputs to a subfolder.
@@ -22,22 +22,10 @@ Includes both a **command-line interface (CLI)** and a **drag-and-drop GUI**.
 
 ---
 
-## 🚀 Usage
-
-### CLI
-```bash
-# Basic usage
-python main.py input.pdf
-
-# Recursive folder search with custom options
-python main.py ~/Documents --dpi 300 --alpha --overwrite
-```
-
-### GUI
-```bash
-python gui.py
-```
-Then drag and drop PDFs/folders into the window, or use the buttons.
+## 📂 Project Structure
+- `logic.py` - Core conversion logic (library functions)
+- `cli.py` - Command-line interface (argument parsing + entry point)
+- `gui.py` - Drag-and-drop GUI (tkinter + tkinterdnd2)
 
 ---
 
@@ -50,10 +38,58 @@ Then drag and drop PDFs/folders into the window, or use the buttons.
 
 ---
 
-## 📂 Project Structure
+## 🚀 Usage (Source)
+
+### CLI
 ```bash
-main.py   # Core CLI converter logic
-gui.py    # GUI wrapper for drag-and-drop
+python cli.py [OPTIONS] INPUT [INPUT ...]
+python cli.py INPUT [INPUT ...] [OPTIONS]
+```
+#### OPTIONS
+- `--dpi <INT>` - Render resolution in DPI. (default: 600)
+- `--alpha` - Keep transparency (alpha channel). (default: Off)
+- `--overwrite` - Overwrite existing PNG files without prompting. (default: Off)
+- `--password <STRING>` - Password to open encrypted PDFs (applies to all inputs). (default: None)
+
+#### Example
+```bash
+# Basic usage
+python cli.py input.pdf
+
+# Recursive folder search with custom options
+python cli.py ~/Documents --dpi 300 --alpha --overwrite
+```
+
+### GUI
+```bash
+python gui.py
+```
+Then drag and drop PDFs/folders into the window, or use the buttons.
+
+---
+
+## 📥 Downloads (Executables)
+If you just want to run it on Windows, download the .exe files from the `dist` folder
+
+**Run the executable**
+- **GUI:** Double-click PDF2PNG.exe
+- **CLI:** Open Terminal in the folder and run:
+```bash
+"PDF2PNG CLI.exe" INPUT [INPUT ...] [OPTIONS]
+```
+
+---
+
+## 🛠️ Build & Run (Executable)
+
+### Build GUI version
+```bash
+pyinstaller gui.py --name "PDF2PNG" --noconsole --onefile --collect-all tkinterdnd2 --collect-all pymupdf --icon ./icon/icon.ico
+```
+
+### Build CLI version
+```bash
+pyinstaller cli.py --name "PDF2PNG" --onefile --collect-all tkinterdnd2 --collect-all pymupdf --icon ./icon/icon.ico
 ```
 
 ---
