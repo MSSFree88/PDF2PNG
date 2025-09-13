@@ -69,7 +69,7 @@ Then drag and drop PDFs/folders into the window, or use the buttons.
 ---
 
 ## 📥 Downloads (Executables)
-If you just want to run it on Windows, download the .exe files from the `dist` folder
+If you just want to run it on Windows, [Download the latest release](../../releases/latest)
 
 **Run the executable**
 - **GUI:** Double-click PDF2PNG.exe
